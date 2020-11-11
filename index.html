@@ -10,29 +10,31 @@
 </head>
 
 <body>
-  <button class="btn">
+  <button class="btn settings-btn">
     <i class="fas fa-cog"></i>
   </button>
 
-  <div class="difficulty-container">
+  <form class="difficulty-container">
     <label for="difficulty">Difficulty</label>
     <select id="difficulty">
       <option value="easy">Easy</option>
       <option value="medium">Medium</option>
       <option value="hard">Hard</option>
     </select>
-  </div>
+  </form>
 
   <div id="game-container">
     <h2>Speed Typer</h2>
     <div class="time-score">
       <p id="time-left">Time left: <span id="time">10s</span></p>
-      <p id="score">Score: <span id="score-points">0</span></p>
+      <p id="score-points">Score: <span id="score">0</span></p>
     </div>
     <p class="instruction">Type the following:</p>
-    <h1 id="random-word">random word</h1>
-    <input type="text" autocomplete="off" autofocus placeholder="Type the word here...">
+    <h1 id="random-word"></h1>
+    <input id="text" type="text" autocomplete="off" autofocus placeholder="Type the word here...">
   </div>
+
+  <div id="game-over-overlay"></div>
 
 
   <script src="script.js"></script>
