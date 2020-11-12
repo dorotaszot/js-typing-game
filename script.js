@@ -8,6 +8,19 @@ const textEl = document.getElementById('text');
 const gameOverOverlay = document.getElementById('game-over-overlay');
 
 // API random words will be fetched here instead of that 
+// async function getWords() {
+//   const res = await fetch('https://api.datamuse.com/words?');
+//   const data = res.json();
+//   return data;
+// }
+
+// async function getWordsFromApi() {
+//   const randomWords = await getWords();
+//   console.log(randomWords);
+// }
+
+// getWordsFromApi();
+
 const words = ['forecast', 'often', 'selection', 'dining', 'video', 'motivation', 'fluff'];
 
 let randomWord;
