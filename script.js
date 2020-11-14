@@ -25,6 +25,7 @@ const words = ['forecast', 'often', 'selection', 'dining', 'video', 'motivation'
 
 let randomWord;
 let score = 0;
+let time = 11;
 
 function getRandomWord() {
   return words[Math.floor(Math.random() * words.length)];
@@ -52,9 +53,32 @@ function checkWord(e) {
       getRandomWord();
       showRandomWord()
       updateScore()
-    }, 300);
+      time += 5;
+    }, 100);
 
   }
+}
+
+const timeInterval = setInterval(updateTime, 1000);
+
+function updateTime() {
+  time--;
+  timeEl.innerText = `${time}s`;
+
+  if (time === 0) {
+    clearInterval(time);
+    gameOver()
+  }
+}
+
+function gameOver() {
+  gameOverOverlay.style.display = 'flex';
+  gameOverOverlay.innerHTML = `
+  <h1>Game Over</h1>
+    <p>Your score is ${score}</p>
+    <button onclick="location.reload()" class="reload-btn">Reload</button>
+  `
+  // gameOverOverlay.style.display = 'none';
 }
 
 // checkWord();
