@@ -28,6 +28,9 @@ const words = ['forecast', 'often', 'selection', 'dining', 'video', 'motivation'
 let randomWord;
 let score = 0;
 let time = 11;
+let difficulty = localStorage.getItem('difficulty') !== null ? localStorage.getItem('difficulty') : 'medium';
+
+selectDifficulty.value = localStorage.getItem('difficulty') !== null ? localStorage.getItem('difficulty') : 'medium';
 
 function getRandomWord() {
   return words[Math.floor(Math.random() * words.length)];
@@ -55,7 +58,14 @@ function checkWord(e) {
       getRandomWord();
       showRandomWord()
       updateScore()
-      // time += 5;
+
+      if (difficulty === 'easy') {
+        time += 4;
+      } else if (difficulty === 'medium') {
+        time += 2;
+      } else if (difficulty === 'hard') {
+        time += 1;
+      }
     }, 100);
 
   }
@@ -67,10 +77,10 @@ function updateTime() {
   time--;
   timeEl.innerText = `${time}s`;
 
-  // if (time === 0) {
-  //   clearInterval(time);
-  //   gameOver()
-  // }
+  if (time === 0) {
+    clearInterval(time);
+    gameOver()
+  }
 }
 
 function changeDifficulty(e) {
@@ -96,10 +106,15 @@ function toggleSettings() {
   difficultyForm.classList.toggle('hide');
 }
 
+function changeDifficulty(e) {
+  difficulty = e.target.value;
+  localStorage.setItem('difficulty', difficulty);
+}
 
 // checkWord();
 
 // Event Listeners
 textEl.addEventListener('input', checkWord);
-// selectDifficulty.addEventListener('change', changeDifficulty);
 settingsBtn.addEventListener('click', toggleSettings);
+selectDifficulty.addEventListener('change', changeDifficulty);
+
