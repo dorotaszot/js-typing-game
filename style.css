@@ -39,6 +39,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: translateY(-100%);
+  transition: 0.3s ease-in-out;
 }
 
 label {
@@ -131,4 +133,9 @@ input:focus {
 
 .reload-btn:focus {
   outline: none;
+}
+
+.hide {
+  transform: translateY(0);
+  /* transition: transform 0.3s ease-in-out; */
 }

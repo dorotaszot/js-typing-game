@@ -6,6 +6,8 @@ const scoreEl = document.getElementById('score');
 const randomWordEl = document.getElementById('random-word');
 const textEl = document.getElementById('text');
 const gameOverOverlay = document.getElementById('game-over-overlay');
+const selectDifficulty = document.getElementById('difficulty');
+
 
 // API random words will be fetched here instead of that 
 // async function getWords() {
@@ -36,7 +38,7 @@ getRandomWord();
 function showRandomWord() {
   randomWord = getRandomWord();
   randomWordEl.innerText = randomWord;
-  console.log(randomWordEl.innerText);
+  // console.log(randomWordEl.innerText);
 }
 
 showRandomWord();
@@ -53,7 +55,7 @@ function checkWord(e) {
       getRandomWord();
       showRandomWord()
       updateScore()
-      time += 5;
+      // time += 5;
     }, 100);
 
   }
@@ -65,10 +67,19 @@ function updateTime() {
   time--;
   timeEl.innerText = `${time}s`;
 
-  if (time === 0) {
-    clearInterval(time);
-    gameOver()
+  // if (time === 0) {
+  //   clearInterval(time);
+  //   gameOver()
+  // }
+}
+
+function changeDifficulty(e) {
+  if (e.target.value === 'hard') {
+    console.log('ok');
+    time += 2
+    // checkWord()
   }
+
 }
 
 function gameOver() {
@@ -81,7 +92,14 @@ function gameOver() {
   // gameOverOverlay.style.display = 'none';
 }
 
+function toggleSettings() {
+  difficultyForm.classList.toggle('hide');
+}
+
+
 // checkWord();
 
 // Event Listeners
 textEl.addEventListener('input', checkWord);
+// selectDifficulty.addEventListener('change', changeDifficulty);
+settingsBtn.addEventListener('click', toggleSettings);
