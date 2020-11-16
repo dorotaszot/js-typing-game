@@ -58,16 +58,14 @@ function checkWord(e) {
       getRandomWord();
       showRandomWord()
       updateScore()
-
-      if (difficulty === 'easy') {
-        time += 4;
-      } else if (difficulty === 'medium') {
-        time += 2;
-      } else if (difficulty === 'hard') {
-        time += 1;
-      }
     }, 100);
-
+    if (difficulty === 'easy') {
+      time += 4;
+    } else if (difficulty === 'medium') {
+      time += 2;
+    } else if (difficulty === 'hard') {
+      time += 1;
+    }
   }
 }
 
@@ -83,14 +81,14 @@ function updateTime() {
   }
 }
 
-function changeDifficulty(e) {
-  if (e.target.value === 'hard') {
-    console.log('ok');
-    time += 2
-    // checkWord()
-  }
+// function changeDifficulty(e) {
+//   if (e.target.value === 'hard') {
+//     console.log('ok');
+//     time += 2
+//     // checkWord()
+//   }
 
-}
+// }
 
 function gameOver() {
   gameOverOverlay.style.display = 'flex';
